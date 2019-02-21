@@ -14,7 +14,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+
+        return response()->json([
+            'users' => $users
+        ], 200);
     }
 
     /**
@@ -35,7 +39,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'user_name'=> 'required|string'
+        ]);
+
+        $user = new User();
+        $user->user_name = $request->user_name;
+
+        $user->save();
+
+        return response()->json($user, 201);
     }
 
     /**
@@ -69,7 +82,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        
     }
 
     /**
@@ -78,8 +91,11 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user -> delete();
+
+        return response(null, 204);
     }
 }

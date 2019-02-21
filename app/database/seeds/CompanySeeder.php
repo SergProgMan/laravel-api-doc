@@ -11,6 +11,10 @@ class CompanySeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Company::class, 5)->create();
+        factory(App\Company::class, 5)
+            ->create()
+            ->each(function($company){
+                $company->users()->saveMany(factory(App\User::class, rand(5, 50))->make());
+            });
     }
 }

@@ -20,3 +20,6 @@ Route::resource('/user', 'UserController', [
   Route::resource('/company', 'CompanyController', [
     'except' => ['edit', 'show', 'create']
   ]);
+
+  Route::get('user/{user}/companies', 'UserController@companies')->name('user.companies');
+  Route::get('company/{company}/users', 'CompanyController@users')->name('company.users');

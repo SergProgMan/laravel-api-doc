@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all Users.
      *
      * @return \Illuminate\Http\Response
      */
@@ -16,9 +16,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return response()->json([
-            'users' => $users
-        ], 200);
+        return response($users,200);
     }
 
     /**
@@ -32,8 +30,10 @@ class UserController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
+     * Store a newly created User in storage.
+     * 
+     * @bodyParam user_name string required The name of the User.
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -48,7 +48,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json($user, 201);
+        return response($user, 201);
     }
 
     /**
@@ -74,7 +74,10 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified User in storage.
+     *
+     * @bodyParam id integer required The id of the User.
+     * @bodyParam user_name string required The name of the User.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\User  $user
@@ -82,20 +85,28 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        
+        $request->validate([
+            'user_name'=> 'required|string'
+        ]);
+
+        $user->update($request->all());
+        $user->save();
+
+        return response($user, 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified User from storage.
+     * 
+     * @bodyParam id integer required The id of the User.
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::findOrFail($id);
         $user -> delete();
 
-        return response(null, 204);
+        return response(204);
     }
 }

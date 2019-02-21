@@ -1,0 +1,481 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/all.js"></script>
+
+
+          <script>
+        $(function() {
+            setupLanguages(["bash","javascript"]);
+        });
+      </script>
+      </head>
+
+  <body class="">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+        <img src="images/logo.png" />
+                    <div class="lang-selector">
+                                  <a href="#" data-language-name="bash">bash</a>
+                                  <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+                            <div class="search">
+              <input type="text" class="search" id="input-search" placeholder="Search">
+            </div>
+            <ul class="search-results"></ul>
+              <div id="toc">
+      </div>
+                    <ul class="toc-footer">
+                                  <li><a href='http://github.com/mpociot/documentarian'>Documentation Powered by Documentarian</a></li>
+                            </ul>
+            </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+          <!-- START_INFO -->
+<h1>Info</h1>
+<p>Welcome to the generated API reference.
+<a href="http://localhost/docs/collection.json">Get Postman Collection</a></p>
+<!-- END_INFO -->
+<h1>general</h1>
+<!-- START_2b6e5a4b188cb183c7e59558cce36cb6 -->
+<h2>Display a listing of all Users.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/user" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/user");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        "id": 1,
+        "user_name": "Sandy Rogahn",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    },
+    {
+        "id": 2,
+        "user_name": "Tobin Torp",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    },
+    {
+        "id": 3,
+        "user_name": "Henriette Turner",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    }
+]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/user</code></p>
+<!-- END_2b6e5a4b188cb183c7e59558cce36cb6 -->
+<!-- START_f0654d3f2fc63c11f5723f233cc53c83 -->
+<h2>Store a newly created User in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/user" \
+    -H "Content-Type: application/json" \
+    -d '{"user_name":"mDCtqqJXtOlpzelH"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/user");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "user_name": "mDCtqqJXtOlpzelH"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/user</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>user_name</td>
+<td>string</td>
+<td>required</td>
+<td>The name of the User.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_f0654d3f2fc63c11f5723f233cc53c83 -->
+<!-- START_a4a2abed1e8e8cad5e6a3282812fe3f3 -->
+<h2>Update the specified User in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/user/{user}" \
+    -H "Content-Type: application/json" \
+    -d '{"id":20,"user_name":"i3TQtSg8QCgWg8XW"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/user/{user}");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 20,
+    "user_name": "i3TQtSg8QCgWg8XW"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/user/{user}</code></p>
+<p><code>PATCH api/user/{user}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>The id of the User.</td>
+</tr>
+<tr>
+<td>user_name</td>
+<td>string</td>
+<td>required</td>
+<td>The name of the User.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_a4a2abed1e8e8cad5e6a3282812fe3f3 -->
+<!-- START_4bb7fb4a7501d3cb1ed21acfc3b205a9 -->
+<h2>Remove the specified User from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/user/{user}" \
+    -H "Content-Type: application/json" \
+    -d '{"id":4}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/user/{user}");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 4
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/user/{user}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>The id of the User.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_4bb7fb4a7501d3cb1ed21acfc3b205a9 -->
+<!-- START_c6a2542e6f559a7fbbee119164fba6c4 -->
+<h2>Display a listing of all Companies.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET -G "http://localhost/api/company" </code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/company");
+
+let headers = {
+    "Accept": "application/json",
+    "Content-Type": "application/json",
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">[
+    {
+        "id": 1,
+        "company_name": "quos deleniti",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    },
+    {
+        "id": 2,
+        "company_name": "qui voluptas",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    },
+    {
+        "id": 3,
+        "company_name": "eveniet aliquam",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    },
+    {
+        "id": 4,
+        "company_name": "quae tempora",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    },
+    {
+        "id": 5,
+        "company_name": "nihil corporis",
+        "deleted_at": null,
+        "created_at": "2019-02-21 13:36:42",
+        "updated_at": "2019-02-21 13:36:42"
+    }
+]</code></pre>
+<h3>HTTP Request</h3>
+<p><code>GET api/company</code></p>
+<!-- END_c6a2542e6f559a7fbbee119164fba6c4 -->
+<!-- START_153d2119af6a72086ba88bc83d58b6b2 -->
+<h2>Store a newly created resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST "http://localhost/api/company" \
+    -H "Content-Type: application/json" \
+    -d '{"company_name":"XzBJ64KYpUFxh8xA"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/company");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "company_name": "XzBJ64KYpUFxh8xA"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/company</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>company_name</td>
+<td>string</td>
+<td>required</td>
+<td>The name of the Company.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_153d2119af6a72086ba88bc83d58b6b2 -->
+<!-- START_2ecc0bb9bcbb89fc130ff0e2da45de7e -->
+<h2>Update the specified resource in storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT "http://localhost/api/company/{company}" \
+    -H "Content-Type: application/json" \
+    -d '{"id":8,"user_name":"ozj66RvAS9K58k5y"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/company/{company}");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 8,
+    "user_name": "ozj66RvAS9K58k5y"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>PUT api/company/{company}</code></p>
+<p><code>PATCH api/company/{company}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>The id of the Company.</td>
+</tr>
+<tr>
+<td>user_name</td>
+<td>string</td>
+<td>required</td>
+<td>The name of the Company.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_2ecc0bb9bcbb89fc130ff0e2da45de7e -->
+<!-- START_17894c0b6f5be7517e5738594a8a845f -->
+<h2>Remove the specified Company from storage.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE "http://localhost/api/company/{company}" \
+    -H "Content-Type: application/json" \
+    -d '{"id":4}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL("http://localhost/api/company/{company}");
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+}
+
+let body = {
+    "id": 4
+}
+
+fetch(url, {
+    method: "DELETE",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>DELETE api/company/{company}</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>required</td>
+<td>The id of the Company.</td>
+</tr>
+</tbody>
+</table>
+<!-- END_17894c0b6f5be7517e5738594a8a845f -->
+      </div>
+      <div class="dark-box">
+                        <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                              </div>
+                </div>
+    </div>
+  </body>
+</html>

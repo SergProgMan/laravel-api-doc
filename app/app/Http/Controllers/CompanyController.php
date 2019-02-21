@@ -8,13 +8,15 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of all Companies.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $companies = Company::all();
+
+        return response($companies, 200);
     }
 
     /**
@@ -29,13 +31,24 @@ class CompanyController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * 
+     * @bodyParam company_name string required The name of the Company.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'company_name'=> 'required|string'
+        ]);
+
+        $company = new Company();
+        $company->company_name = $request->company_name;
+
+        $user->save();
+
+        return response($company, 201);
     }
 
     /**
@@ -62,6 +75,9 @@ class CompanyController extends Controller
 
     /**
      * Update the specified resource in storage.
+     * 
+     * @bodyParam id integer required The id of the Company.
+     * @bodyParam user_name string required The name of the Company.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Company  $company
@@ -69,17 +85,28 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $request->validate([
+            'company_name'=> 'required|string'
+        ]);
+
+        $company->update($request->all());
+        $company->save();
+
+        return response($company, 200);
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Company from storage.
+     * 
+     * @bodyParam id integer required The id of the Company.
      *
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
     public function destroy(Company $company)
     {
-        //
+        $company -> delete();
+
+        return response(204);
     }
 }

@@ -5,7 +5,7 @@
     **git clone https://github.com/SergProgMan/laravel-api-doc**
 - go to cloned folder: 
     **cd laravel-api-doc**
-- for first time use command: 
+- for the first time use command: 
     **docker-compose up --build -d** 
 - later you can use: 
     **docker-compose up -d**

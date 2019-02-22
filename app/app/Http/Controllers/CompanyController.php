@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CompanyController extends Controller
 {
     /**
-     * Display a listing of all Companies.
+     * Get a list of all Companies.
      *
      * @return \Illuminate\Http\Response
      */
@@ -30,7 +30,7 @@ class CompanyController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Company in storage.
      * 
      * @bodyParam company_name string required The name of the Company.
      *
@@ -46,7 +46,7 @@ class CompanyController extends Controller
         $company = new Company();
         $company->company_name = $request->company_name;
 
-        $user->save();
+        $company->save();
 
         return response($company, 201);
     }
@@ -74,10 +74,9 @@ class CompanyController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Company in storage.
      * 
-     * @bodyParam id integer required The id of the Company.
-     * @bodyParam user_name string required The name of the Company.
+     * @bodyParam company_name string required The name of the Company.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Company  $company
@@ -97,8 +96,6 @@ class CompanyController extends Controller
 
     /**
      * Remove the specified Company from storage.
-     * 
-     * @bodyParam id integer required The id of the Company.
      *
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
@@ -108,5 +105,18 @@ class CompanyController extends Controller
         $company -> delete();
 
         return response(204);
+    }
+
+    /**
+     * Get the specified Company's users.
+     * 
+     * @param  \App\Company  $company
+     * @return \Illuminate\Http\Response
+     */
+    public function users(Company $company)
+    {
+        $users = $company->users;
+
+        return response($users, 200);
     }
 }

@@ -15,11 +15,11 @@ use Illuminate\Http\Request;
 
 Route::resource('/user', 'UserController', [
     'except' => ['edit', 'show', 'create']
-  ]);
+]);
+Route::get('user/{user}/companies', 'UserController@companies')->name('user.companies');
 
-  Route::resource('/company', 'CompanyController', [
+
+Route::resource('/company', 'CompanyController', [
     'except' => ['edit', 'show', 'create']
-  ]);
-
-  Route::get('user/{user}/companies', 'UserController@companies')->name('user.companies');
-  Route::get('company/{company}/users', 'CompanyController@users')->name('company.users');
+]);
+Route::get('company/{company}/users', 'CompanyController@users')->name('company.users');

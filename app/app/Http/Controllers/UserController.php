@@ -76,8 +76,8 @@ class UserController extends Controller
     /**
      * Update the specified User in storage.
      *
-     * @bodyParam id integer required The id of the User.
      * @bodyParam user_name string required The name of the User.
+    // * @bodyParam company_name string optional The name of the Company to atach.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\User  $user
@@ -86,19 +86,21 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
-            'user_name'=> 'required|string'
+            'user_name'=> 'required|string',
+            'company_name' => 'string'
         ]);
 
         $user->update($request->all());
-        $user->save();
+        if($user->save()){
+            // $company = \App\Company::where('company_name', $request->company_name)->firstOrFail();
+            // $user->companies()->sync($company);
+        }
 
         return response($user, 200);
     }
 
     /**
      * Remove the specified User from storage.
-     * 
-     * @bodyParam id integer required The id of the User.
      *
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
@@ -108,5 +110,18 @@ class UserController extends Controller
         $user -> delete();
 
         return response(204);
+    }
+
+        /**
+     * Get the specified User's companies.
+     *
+     * @param  \App\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function companies(User $user)
+    {
+        $companies = $user->companies;
+
+        return response($companies, 200);
     }
 }
